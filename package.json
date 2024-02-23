@@ -1,7 +1,7 @@
 {
-    "name": "psalm-vscode-plugin",
-    "displayName": "Psalm (PHP Static Analysis Linting Machine)",
-    "description": "VS Code Plugin for Psalm",
+    "name": "psalm-vscode-plugin-fork",
+    "displayName": "Psalm (PHP Static Analysis Linting Machine) - fork",
+    "description": "VS Code Plugin for Psalm (fork)",
     "author": "Matthew Brown",
     "contributors": [
         {
@@ -9,14 +9,18 @@
         },
         {
             "name": "Anthony Rainer"
+        },
+        {
+            "name": "Anupam Kumar",
+            "email": "kyteinsy@gmail.com"
         }
     ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/psalm/psalm-vscode-plugin/issues"
+        "url": "https://github.com/kyteinsky/psalm-vscode-plugin/issues"
     },
     "version": "2.7.0",
-    "publisher": "getpsalm",
+    "publisher": "kyteinsky",
     "categories": [
         "Linters",
         "Programming Languages"
@@ -28,7 +32,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/psalm/psalm-vscode-plugin"
+        "url": "https://github.com/kyteinsky/psalm-vscode-plugin"
     },
     "engines": {
         "vscode": "^1.80.2"
@@ -86,9 +90,12 @@
                     "default": null,
                     "description": "Optional (Advanced). If provided, this overrides the Psalm version detection (Modifying requires VSCode reload)"
                 },
-                "psalm.psalmScriptPath": {
-                    "type": "string",
-                    "default": null,
+                "psalm.psalmScriptPaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
                     "description": "Optional (Advanced). If provided, this overrides the Psalm script to use, e.g. vendor/bin/psalm-language-server. (Modifying requires VSCode reload)"
                 },
                 "psalm.psalmScriptArgs": {

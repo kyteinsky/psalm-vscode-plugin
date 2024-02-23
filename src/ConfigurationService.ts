@@ -9,7 +9,7 @@ interface Config {
     phpExecutablePath?: string;
     phpExecutableArgs?: string[];
     psalmVersion?: string;
-    psalmScriptPath?: string;
+    psalmScriptPaths?: string[];
     psalmScriptArgs?: string[];
     disableAutoComplete: boolean;
     maxRestartCount: integer;
@@ -67,9 +67,9 @@ export class ConfigurationService {
         this.config.psalmVersion =
             workspaceConfiguration.get<string>('psalmVersion');
 
-        this.config.psalmScriptPath = workspaceConfiguration.get(
-            'psalmScriptPath',
-            join('vendor', 'vimeo', 'psalm', 'psalm-language-server')
+        this.config.psalmScriptPaths = workspaceConfiguration.get(
+            'psalmScriptPaths',
+            [join('vendor', 'vimeo', 'psalm', 'psalm-language-server')]
         );
 
         this.config.psalmScriptArgs = workspaceConfiguration.get(

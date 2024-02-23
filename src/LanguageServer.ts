@@ -621,22 +621,40 @@ export class LanguageServer {
     }
 
     /**
-     * Resolve Pslam Script Path if absolute or relative
+     * Resolve one valid pslam script path from among psalm.psalmScriptPaths
      */
     private async resolvePsalmScriptPath(): Promise<string> {
-        const psalmScriptPath =
-            this.configurationService.get('psalmScriptPath');
+        const psalmScriptPaths = await this.resolvePsalmScriptPaths();
 
-        if (!psalmScriptPath) {
+        for (const psalmScriptPath of psalmScriptPaths) {
+            if (this.isFile(psalmScriptPath)) {
+                return psalmScriptPath;
+            }
+        }
+
+        // this will be caught by the caller (hopefully)
+        return psalmScriptPaths[0];
+    }
+
+    /**
+     * Resolve Pslam Script Paths if absolute or relative
+     */
+    private async resolvePsalmScriptPaths(): Promise<string[]> {
+        const psalmScriptPaths =
+            this.configurationService.get('psalmScriptPaths');
+
+        if (!psalmScriptPaths) {
             await showErrorMessage(
-                'Unable to find Psalm Language Server. Please set psalm.psalmScriptPath'
+                'Unable to find Psalm Language Server. Please set psalm.psalmScriptPaths'
             );
-            throw new Error('psalmScriptPath is not set');
+            throw new Error('psalmScriptPaths is not set');
         }
 
-        if (isAbsolute(psalmScriptPath)) {
-            return psalmScriptPath;
-        }
-        return join(this.workspacePath, psalmScriptPath);
+        return psalmScriptPaths.map((psalmScriptPath) => {
+            if (isAbsolute(psalmScriptPath)) {
+                return psalmScriptPath;
+            }
+            return join(this.workspacePath, psalmScriptPath);
+        });
     }
 }
