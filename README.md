@@ -1,10 +1,12 @@
 # Psalm VScode Plugin
 
-[![build](https://github.com/psalm/psalm-vscode-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/psalm/psalm-vscode-plugin/actions/workflows/ci.yml)
-[![downloads](https://img.shields.io/visual-studio-marketplace/d/getpsalm.psalm-vscode-plugin)](https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin)
-[![installs](https://img.shields.io/visual-studio-marketplace/i/getpsalm.psalm-vscode-plugin)](https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin)
+[![build](https://github.com/kyteinsky/psalm-vscode-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/kyteinsky/psalm-vscode-plugin/actions/workflows/ci.yml)
+[![downloads](https://img.shields.io/visual-studio-marketplace/d/kyteinsky.psalm-vscode-plugin)](https://marketplace.visualstudio.com/items?itemName=kyteinsky.psalm-vscode-plugin)
+[![installs](https://img.shields.io/visual-studio-marketplace/i/kyteinsky.psalm-vscode-plugin)](https://marketplace.visualstudio.com/items?itemName=kyteinsky.psalm-vscode-plugin)
 
 [Psalm](https://getpsalm.org) is a static analysis tool for finding errors in PHP applications.
+
+This fork changes the psalm script path to an array type instead of a string type.
 
 ## Installation
 
